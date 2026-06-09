@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:viewBehavior="LinearLayout_vertical"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent">
+
+	<com.itsvks.layouteditor.editor.palette.layouts.ConstraintLayoutDesign
+		tools:viewBehavior="LinearLayout_vertical"
+		android:layout_height="match_parent"
+		android:layout_width="match_parent">
+
+		<com.itsvks.layouteditor.editor.palette.containers.AppBarLayoutDesign
+			tools:viewBehavior="LinearLayout_vertical"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			android:id="@+id/app_bar">
+
+			<com.itsvks.layouteditor.editor.palette.containers.MaterialToolbarDesign
+				tools:viewBehavior="LinearLayout_vertical"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:paddingRight="6dp"
+				app:title="@string/app_name"
+				app:titleTextAppearance="@style/TextAppearance.App.TitleSmallMedium"
+				app:titleTextColor="@color/md_theme_textColorControlNormal"
+				android:paddingLeft="3dp"
+				android:id="@+id/tool_bar" />
+
+		</com.itsvks.layouteditor.editor.palette.containers.AppBarLayoutDesign>
+
+		<androidx.coordinatorlayout.widget.CoordinatorLayout
+			tools:viewBehavior="LinearLayout_vertical"
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:layout_marginTop="?attr/actionBarSize"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent">
+
+			<com.itsvks.layouteditor.editor.palette.layouts.ConstraintLayoutDesign
+				tools:viewBehavior="LinearLayout_vertical"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				style="@style/Widget.AppTheme.BottomSheet"
+				app:behavior_hideable="false"
+				android:id="@+id/editor_bottom_sheet">
+
+				<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+					tools:viewBehavior="LinearLayout_vertical"
+					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent">
+
+					<com.itsvks.layouteditor.editor.palette.containers.AppBarLayoutDesign
+						tools:viewBehavior="LinearLayout_vertical"
+						android:id="@+id/app_bar_editor"
+						android:layout_width="match_parent"
+						android:layout_height="48dp"
+						android:layout_marginHorizontal="16dp"
+						android:layout_marginVertical="3dp"
+						android:background="@macro/m3_comp_sheet_bottom_docked_container_color">
+
+						<com.itsvks.layouteditor.editor.palette.containers.MaterialToolbarDesign
+							tools:viewBehavior="LinearLayout_vertical"
+							android:id="@+id/tool_bar_editor"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							app:titleTextAppearance="@style/TextAppearance.App.TitleMediumSmall"
+							app:titleTextColor="@color/md_theme_textColorControlNormal">
+
+							<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+								tools:viewBehavior="LinearLayout_vertical"
+								android:layout_height="wrap_content"
+								android:layout_width="wrap_content"
+								android:gravity="center"
+								android:id="@+id/top_right_linear_layout"
+								android:visibility="gone"
+								android:layout_gravity="right"
+								android:orientation="vertical">
+
+								<com.itsvks.layouteditor.editor.palette.containers.BottomNavigationViewDesign
+									tools:viewBehavior="LinearLayout_vertical"
+									android:layout_height="wrap_content"
+									android:layout_width="124dp"
+									app:labelVisibilityMode="unlabeled"
+									app:backgroundTint="@macro/m3_comp_sheet_bottom_docked_container_color"
+									app:menu="@menu/editor_top_right_navigation"
+									app:itemIconTint="@color/icon_color"
+									android:id="@+id/top_right_nav_view" />
+
+							</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+						</com.itsvks.layouteditor.editor.palette.containers.MaterialToolbarDesign>
+
+					</com.itsvks.layouteditor.editor.palette.containers.AppBarLayoutDesign>
+
+					<com.itsvks.layouteditor.editor.palette.layouts.ConstraintLayoutDesign
+						tools:viewBehavior="LinearLayout_vertical"
+						android:id="@+id/editor_preview_container"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent">
+
+						<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+							tools:viewBehavior="LinearLayout_vertical"
+							android:id="@+id/editor_preview_linear_layout"
+							android:layout_width="0dp"
+							android:layout_height="0dp"
+							android:orientation="vertical"
+							app:layout_constraintTop_toTopOf="parent"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintEnd_toStartOf="@id/linear_layout_compose_preview"
+							app:layout_constraintWidth_percent="1">
+
+							<dn.composeuilab.editor.CodeEditorView
+								tools:viewBehavior="LinearLayout_vertical"
+								android:id="@+id/code_editor"
+								android:layout_width="match_parent"
+								android:layout_height="0dp"
+								android:layout_weight="1" />
+
+							<com.itsvks.layouteditor.editor.palette.containers.HorizontalScrollViewDesign
+								tools:viewBehavior="LinearLayout_vertical"
+								android:id="@+id/editor_input_view"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:scrollbars="none"
+								android:overScrollMode="never"
+								android:fillViewport="true">
+
+								<dn.composeuilab.editor.symbol.SymbolInputView
+									tools:viewBehavior="LinearLayout_vertical"
+									android:id="@+id/symbol_input_view"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content" />
+
+							</com.itsvks.layouteditor.editor.palette.containers.HorizontalScrollViewDesign>
+
+						</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+						<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+							tools:viewBehavior="LinearLayout_vertical"
+							android:id="@+id/linear_layout_analyze"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:orientation="horizontal"
+							app:layout_constraintTop_toTopOf="parent"
+							app:layout_constraintEnd_toStartOf="@id/linear_layout_container_preview">
+
+							<com.itsvks.layouteditor.editor.palette.google.MaterialButtonDesign
+								tools:viewBehavior="LinearLayout_vertical"
+								android:id="@+id/text_button_analyzing"
+								style="@style/Widget.Material3.Button.TextButton"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:minHeight="0dp"
+								android:minWidth="0dp"
+								android:visibility="gone"
+								android:paddingHorizontal="6dp"
+								android:paddingVertical="4dp"
+								android:insetTop="0dp"
+								android:insetBottom="0dp"
+								android:insetLeft="0dp"
+								android:insetRight="0dp"
+								android:layout_margin="4dp"
+								android:text="@string/analyzing"
+								android:textColor="@color/md_theme_textColorControlNormal"
+								android:textAppearance="@style/TextAppearance.App.TitleLargeSmall"
+								app:cornerRadius="8dp" />
+
+						</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+						<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+							tools:viewBehavior="LinearLayout_vertical"
+							android:id="@+id/linear_layout_container_preview"
+							android:layout_width="0dp"
+							android:layout_height="0dp"
+							android:orientation="vertical"
+							app:layout_constraintTop_toTopOf="parent"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintStart_toEndOf="@id/editor_preview_linear_layout"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintWidth_percent="0">
+
+							<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+								tools:viewBehavior="LinearLayout_vertical"
+								android:id="@+id/linear_layout_loading"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:paddingHorizontal="4dp"
+								android:paddingVertical="4dp"
+								android:visibility="gone"
+								android:orientation="horizontal"
+								android:gravity="end|center_vertical">
+
+								<com.itsvks.layouteditor.editor.palette.google.CircularProgressDesign
+									tools:viewBehavior="LinearLayout_vertical"
+									android:id="@+id/circular_progress_indicator_loading"
+									android:layout_width="16dp"
+									android:indeterminate="true"
+									app:indicatorSize="16dp"
+									app:trackThickness="2dp"
+									android:layout_height="16dp" />
+
+								<com.itsvks.layouteditor.editor.palette.google.MaterialTextViewDesign
+									tools:viewBehavior="LinearLayout_vertical"
+									android:id="@+id/text_view_loading"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="@string/loading"
+									android:layout_marginRight="6dp"
+									android:paddingVertical="2dp"
+									android:textColor="@color/md_theme_textColorControlNormal"
+									android:textAppearance="@style/TextAppearance.App.TitleLargeSmall" />
+
+							</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+							<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+								tools:viewBehavior="LinearLayout_vertical"
+								android:id="@+id/linear_layout_initializing"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:visibility="gone"
+								android:orientation="vertical"
+								android:gravity="center">
+
+								<com.itsvks.layouteditor.editor.palette.google.CircularProgressDesign
+									tools:viewBehavior="LinearLayout_vertical"
+									android:id="@+id/circular_progress_indicator_initializing"
+									android:layout_width="20dp"
+									android:layout_height="20dp"
+									android:indeterminate="true"
+									app:indicatorSize="20dp"
+									app:trackThickness="2dp" />
+
+								<com.itsvks.layouteditor.editor.palette.google.MaterialTextViewDesign
+									tools:viewBehavior="LinearLayout_vertical"
+									android:id="@+id/text_view_initializing"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="6dp"
+									android:text="@string/initializing"
+									android:textColor="@color/md_theme_textColorControlNormal"
+									android:textAppearance="@style/TextAppearance.App.TitleLargeSmall" />
+
+							</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+							<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+								tools:viewBehavior="LinearLayout_vertical"
+								android:id="@+id/linear_layout_no_preview"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:visibility="gone"
+								android:orientation="vertical"
+								android:gravity="center">
+
+								<com.itsvks.layouteditor.editor.palette.google.MaterialTextViewDesign
+									tools:viewBehavior="LinearLayout_vertical"
+									android:id="@+id/text_view_no_preview"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:gravity="center"
+									android:textSize="6sp"
+									android:text="@string/no_preview_found_message"
+									android:textColor="@color/md_theme_textColorControlNormal"
+									android:textAppearance="@style/TextAppearance.App.TitleLargeSmall" />
+
+							</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+							<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+								tools:viewBehavior="LinearLayout_vertical"
+								android:id="@+id/linear_layout_multiple_preview"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:visibility="gone"
+								android:orientation="vertical"
+								android:gravity="center">
+
+								<com.itsvks.layouteditor.editor.palette.google.MaterialTextViewDesign
+									tools:viewBehavior="LinearLayout_vertical"
+									android:id="@+id/text_view_multiple_preview"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:gravity="center"
+									android:textSize="6sp"
+									android:text="@string/multiple_previews_not_supported"
+									android:textColor="@color/md_theme_textColorControlNormal"
+									android:textAppearance="@style/TextAppearance.App.TitleLargeSmall" />
+
+							</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+							<com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign
+								tools:viewBehavior="LinearLayout_vertical"
+								android:id="@+id/linear_layout_compose_preview"
+								android:layout_width="match_parent"
+								android:layout_height="0dp"
+								android:visibility="gone"
+								android:layout_weight="1">
+
+								<androidx.compose.ui.platform.ComposeView
+									tools:viewBehavior="LinearLayout_vertical"
+									android:id="@+id/compose_view"
+									android:layout_width="match_parent"
+									android:layout_height="match_parent" />
+
+							</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+						</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+					</com.itsvks.layouteditor.editor.palette.layouts.ConstraintLayoutDesign>
+
+				</com.itsvks.layouteditor.editor.palette.layouts.LinearLayoutDesign>
+
+			</com.itsvks.layouteditor.editor.palette.layouts.ConstraintLayoutDesign>
+
+		</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+	</com.itsvks.layouteditor.editor.palette.layouts.ConstraintLayoutDesign>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
